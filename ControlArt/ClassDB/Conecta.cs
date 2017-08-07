@@ -7,7 +7,7 @@ namespace ControlArt.ClassDB
     {
 
         // atributos //
-        private string string_conexao = "Persist Security Info=False; server=confusart-db.mysql.uhserver.com;database=confusart_db;Uid=jeffersonsousa; Pwd=Jeff@2124";
+        private string string_conexao = "Persist Security Info=False; server=;database=;Uid=; Pwd=";
         public string query_string = "";
 
         #region metodos
