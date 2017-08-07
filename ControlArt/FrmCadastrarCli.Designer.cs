@@ -40,11 +40,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnSair = new System.Windows.Forms.Button();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.txtTel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGrava
             // 
-            this.btnGrava.Location = new System.Drawing.Point(517, 256);
+            this.btnGrava.Location = new System.Drawing.Point(517, 298);
             this.btnGrava.Name = "btnGrava";
             this.btnGrava.Size = new System.Drawing.Size(101, 43);
             this.btnGrava.TabIndex = 6;
@@ -56,7 +58,7 @@
             // 
             this.dtIdade.CustomFormat = "yyyy-mm-dd";
             this.dtIdade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtIdade.Location = new System.Drawing.Point(258, 213);
+            this.dtIdade.Location = new System.Drawing.Point(258, 255);
             this.dtIdade.Name = "dtIdade";
             this.dtIdade.Size = new System.Drawing.Size(101, 20);
             this.dtIdade.TabIndex = 3;
@@ -65,7 +67,7 @@
             // radioButtonM
             // 
             this.radioButtonM.AutoSize = true;
-            this.radioButtonM.Location = new System.Drawing.Point(262, 256);
+            this.radioButtonM.Location = new System.Drawing.Point(262, 298);
             this.radioButtonM.Name = "radioButtonM";
             this.radioButtonM.Size = new System.Drawing.Size(34, 17);
             this.radioButtonM.TabIndex = 4;
@@ -76,7 +78,7 @@
             // radioButtonF
             // 
             this.radioButtonF.AutoSize = true;
-            this.radioButtonF.Location = new System.Drawing.Point(305, 256);
+            this.radioButtonF.Location = new System.Drawing.Point(305, 298);
             this.radioButtonF.Name = "radioButtonF";
             this.radioButtonF.Size = new System.Drawing.Size(31, 17);
             this.radioButtonF.TabIndex = 5;
@@ -122,7 +124,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(255, 197);
+            this.label5.Location = new System.Drawing.Point(255, 239);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 9;
@@ -131,7 +133,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(255, 240);
+            this.label6.Location = new System.Drawing.Point(255, 282);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 10;
@@ -149,10 +151,26 @@
             this.btnSair.Location = new System.Drawing.Point(797, 366);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 11;
+            this.btnSair.TabIndex = 7;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(255, 190);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(55, 13);
+            this.lblTel.TabIndex = 11;
+            this.lblTel.Text = "Telefone: ";
+            // 
+            // txtTel
+            // 
+            this.txtTel.Location = new System.Drawing.Point(258, 207);
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(125, 20);
+            this.txtTel.TabIndex = 12;
             // 
             // FrmCadastrarCli
             // 
@@ -160,6 +178,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(884, 401);
+            this.Controls.Add(this.txtTel);
+            this.Controls.Add(this.lblTel);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label6);
@@ -173,11 +193,11 @@
             this.Controls.Add(this.dtIdade);
             this.Controls.Add(this.btnGrava);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmCadastrarCli";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCadastrarCli";
+            this.Load += new System.EventHandler(this.FrmCadastrarCli_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +217,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Label lblTel;
+        private System.Windows.Forms.TextBox txtTel;
     }
 }

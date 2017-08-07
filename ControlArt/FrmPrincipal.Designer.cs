@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
+            this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +50,7 @@
             // menuPrincipal
             // 
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arquivoToolStripMenuItem,
             this.cadastrosToolStripMenuItem,
             this.vendasToolStripMenuItem});
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
@@ -54,6 +59,37 @@
             this.menuPrincipal.TabIndex = 0;
             this.menuPrincipal.Text = "menuStrip1";
             this.menuPrincipal.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuPrincipal_ItemClicked);
+            // 
+            // arquivoToolStripMenuItem
+            // 
+            this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usuáriosToolStripMenuItem,
+            this.sairToolStripMenuItem});
+            this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
+            this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.arquivoToolStripMenuItem.Text = "Arquivo";
+            // 
+            // usuáriosToolStripMenuItem
+            // 
+            this.usuáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem});
+            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usuáriosToolStripMenuItem.Text = "Usuários";
+            // 
+            // cadastrarToolStripMenuItem
+            // 
+            this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadastrarToolStripMenuItem.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // cadastrosToolStripMenuItem
             // 
@@ -115,14 +151,14 @@
             // pagSeguroToolStripMenuItem
             // 
             this.pagSeguroToolStripMenuItem.Name = "pagSeguroToolStripMenuItem";
-            this.pagSeguroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pagSeguroToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.pagSeguroToolStripMenuItem.Text = "PagSeguro";
             this.pagSeguroToolStripMenuItem.Click += new System.EventHandler(this.pagSeguroToolStripMenuItem_Click);
             // 
             // pessoalToolStripMenuItem
             // 
             this.pessoalToolStripMenuItem.Name = "pessoalToolStripMenuItem";
-            this.pessoalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pessoalToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.pessoalToolStripMenuItem.Text = "Pessoal";
             this.pessoalToolStripMenuItem.Click += new System.EventHandler(this.pessoalToolStripMenuItem_Click);
             // 
@@ -166,5 +202,9 @@
         private System.Windows.Forms.ToolStripMenuItem pagSeguroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pessoalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vandasManualToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }

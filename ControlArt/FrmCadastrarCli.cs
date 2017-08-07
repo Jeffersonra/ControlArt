@@ -1,28 +1,119 @@
 ﻿using System;
 using System.Windows.Forms;
 using ControlArt.ClassDB;
+using System.Text.RegularExpressions;
 
 namespace ControlArt
 {
     public partial class FrmCadastrarCli : Form
     {
+        private DateTime data;
+        private string novaData;
+        private string insertDate;
+        private string sexo = "";
+
         public FrmCadastrarCli()
         {
             InitializeComponent();
         }
 
+        private void FrmCadastrarCli_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        #region "Eventos"
         private void btnGrava_Click(object sender, EventArgs e)
+        {
+                if (ValidaCampos())
+                {
+                    if (InsereDados())
+                    {
+                        MessageBox.Show("Gravado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }else
+                    {
+                        MessageBox.Show("Erro ao gravar dados!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }   
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+
+        #region "Métodos"
+
+        private bool InsereDados()
         {
             try
             {
+                //Conecta Sql
+                Conecta cnn = new Conecta();
+                cnn.query_string = "";
+
+                cnn.query_string = "INSERT INTO tbclientes " +
+                                   "VALUES(default,'" + txtNome.Text +
+                                   "','" + txtEmail.Text +
+                                   "','" + novaData +
+                                   "','" + sexo +
+                                   "','" + insertDate +
+                                   "','" + txtTel.Text + "')";
+                // valida execução
+                if (cnn.execute_non_query())
+                {
+                    txtEmail.Text = "";
+                    txtNome.Text = "";
+                    radioButtonF.Checked = false;
+                    radioButtonM.Checked = false;
+                    sexo = "";
+                    return true;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region "Validações"
+
+        private bool ValidaCampos()
+        {
+            try
+            {
+       
                 //Modifica a data para inserir na tabela
-                var data = DateTime.Parse(dtIdade.Text);
-                var novaData = data.Year + "-" + data.Month + "-" + data.Day;
+                data = DateTime.Parse(dtIdade.Text);
+                DateTime dateLimite = new DateTime(1940, 1, 1, 0, 0, 0);
+                //Valida data Minima
+                if (data < dateLimite)
+                {
+                    MessageBox.Show("A data não pode ser menor que 1940", "Data inválida!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+
+                //Valida data Maxima
+                if (data > DateTime.Now)
+                {
+                    MessageBox.Show("A data não pode ser maior que a data atual!", "Data inválida!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+
+                novaData = data.Year + "-" + data.Month + "-" + data.Day;
                 data = DateTime.Now;
-                var insertDate = data.Year + "-" + data.Month + "-" + data.Day;
+                insertDate = data.Year + "-" + data.Month + "-" + data.Day;
 
                 //Pega valor do RadioButton e valoda se esta preenchido
-                var sexo = "";
+                sexo = "";
                 if (radioButtonF.Checked)
                 {
                     sexo = "F";
@@ -33,56 +124,42 @@ namespace ControlArt
                 }
                 else
                 {
-                    throw new Exception("Selecione o Sexo!");
+                    MessageBox.Show("Selecione o Sexo!","Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
 
                 //Valida campos não prrenchidos
-                if(txtEmail.Text == "" || txtNome.Text == "")
+                if (txtNome.Text == "")
                 {
-                    throw new Exception();
+                    MessageBox.Show("Por favor, Preencher campo Nome!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
 
-                //valida data
-                if (data > DateTime.Now)
+                if (txtEmail.Text == "")
                 {
-                    throw new Exception();
-                }
-
-                //Conecta Sql
-                Conecta cnn = new Conecta();
-                cnn.query_string = "";
-
-                cnn.query_string = "INSERT INTO tbclientes " +
-                                   "VALUES(default,'" + txtNome.Text +
-                                   "','" + txtEmail.Text +
-                                   "','" + novaData +
-                                   "','" + sexo + 
-                                   "','" + insertDate + "')";
-                // valida execução
-                if (cnn.execute_non_query())
-                {
-                    txtEmail.Text = "";
-                    txtNome.Text = "";
-                    radioButtonF.Checked = false;
-                    radioButtonM.Checked = false;
-                    sexo = "";
-                    MessageBox.Show("Gravado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Por favor, Preencher campo E-mail!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
                 else
                 {
-                    throw new Exception();
+                    string email = txtEmail.Text;
+
+                    Regex rg = new Regex(@"([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
+
+                    if (!rg.IsMatch(email))
+                    {
+                        MessageBox.Show("Email Inválido!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
                 }
+                return true;
             }
             catch
             {
-                MessageBox.Show("Verifique se todos os campos estão preenchidos corretamente!", "Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
             }
-            
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
     }
 }
