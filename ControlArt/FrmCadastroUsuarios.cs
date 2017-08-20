@@ -15,7 +15,6 @@ namespace ControlArt
     {
         private DateTime data;
         private string Insertdata;
-        private DataTable dataGridViewCliente;
 
         public FrmCadastroUsuarios()
         {
@@ -31,11 +30,21 @@ namespace ControlArt
         }
 
         #region "Eventos"
+        /// <summary>
+        /// Click do botão Sair
+        /// </summary>
+        /// <param name="sender"></param>
+        /// /// <param name="e"></param>
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Click do botão Inserir Cadastro de usuários
+        /// </summary>
+        /// <param name="sender"></param>
+        /// /// <param name="e"></param>
         private void btnInserir_Click(object sender, EventArgs e)
         {
             if (ValidaCampos())
@@ -53,6 +62,11 @@ namespace ControlArt
             }
         }
 
+        /// <summary>
+        /// Click do botão Redefinir Senha
+        /// </summary>
+        /// <param name="sender"></param>
+        /// /// <param name="e"></param>
         private void btnRedefinir_Click(object sender, EventArgs e)
         {
             RedefineSenha();
@@ -62,6 +76,9 @@ namespace ControlArt
 
         #region "Métodos"
 
+        /// <summary>
+        /// Metodo para Insere os dados na base
+        /// </summary>
         private bool InsereDados()
         {
             try
@@ -98,6 +115,9 @@ namespace ControlArt
             }
         }
 
+        /// <summary>
+        /// Metodo para Buscar usuários na base
+        /// </summary>
         private void BuscaUsuarios()
         {
             Conecta cnn = new Conecta();
@@ -116,6 +136,9 @@ namespace ControlArt
 
         }
 
+        /// <summary>
+        /// Metodo para redefinir senha
+        /// </summary>
         private bool RedefineSenha()
         {
             try
@@ -166,6 +189,9 @@ namespace ControlArt
 
         #region "Validações"
 
+        /// <summary>
+        /// Metodo para Validar Dados digitados
+        /// </summary>
         private bool ValidaCampos()
         {
             try

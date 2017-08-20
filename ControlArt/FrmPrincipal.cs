@@ -18,88 +18,6 @@ namespace ControlArt
             InitializeComponent();
         }
 
-        //Menu Form
-        private void cadastrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCadastrarCli frmChild = new FrmCadastrarCli();
-            frmChild.MdiParent = this;
-            
-            //Verifica se o form ja esta aberto se estiver da um focus no form.
-            bool _found = false;
-
-            foreach (Form _openForm in Application.OpenForms)
-            {
-                if (_openForm is FrmCadastrarCli)
-                {
-                    _openForm.Focus();
-                    _found = true;
-                }
-            }
-
-            if (!_found)
-            {
-                FrmCadastrarCli _form2 = new FrmCadastrarCli();
-                frmChild.Text = "Cadastro de Clientes";
-                frmChild.Show();
-            }
-        }
-
-        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCadastroUsuarios frmChild = new FrmCadastroUsuarios();
-            frmChild.MdiParent = this;
-
-            //Verifica se o form ja esta aberto se estiver da um focus no form.
-            bool _found = false;
-
-            foreach (Form _openForm in Application.OpenForms)
-            {
-                if (_openForm is FrmCadastroUsuarios)
-                {
-                    _openForm.Focus();
-                    _found = true;
-                }
-            }
-
-            if (!_found)
-            {
-                FrmCadastroUsuarios _form2 = new FrmCadastroUsuarios();
-                frmChild.Text = "Cadastro de Usuários";
-                frmChild.Show();
-            }
-        }
-
-        private void consultarClientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmConsultaCli frmChild = new FrmConsultaCli();
-            frmChild.MdiParent = this;
-
-            //Verifica se o form ja esta aberto se estiver da um focus no form.
-            bool _found = false;
-
-            foreach (Form _openForm in Application.OpenForms)
-            {
-                if (_openForm is FrmConsultaCli)
-                {
-                    _openForm.Focus();
-                    _found = true;
-                }
-            }
-
-            if (!_found)
-            {
-                FrmConsultaCli _form2 = new FrmConsultaCli();
-                frmChild.Text = "Consulta Clientes";
-                frmChild.Show();
-            }
-        }
-
-        //Load do Form
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         #region Modulos em desenvolvimento
         private void menuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -133,11 +51,122 @@ namespace ControlArt
 
         #endregion
 
+        //Load do Form
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        #region Menu: Arquivos
+        /// <summary>
+        /// Click do Botão para abrir o FrmCadastroUsuarios
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadastroUsuarios frmChild = new FrmCadastroUsuarios();
+            frmChild.MdiParent = this;
+
+            //Verifica se o form ja esta aberto se estiver da um focus no form.
+            bool _found = false;
+
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmCadastroUsuarios)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+
+            if (!_found)
+            {
+                FrmCadastroUsuarios _form2 = new FrmCadastroUsuarios();
+                frmChild.Text = "Cadastro de Usuários";
+                frmChild.Show();
+            }
+        }
+
+        /// <summary>
+        /// Click do Botão Fechar a Aplicação
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-       
+        #endregion
+
+        #region Menu: Cadastros
+
+        /// <summary>
+        /// Click do Botão para abrir a o FrmCadastroCli
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
+        private void cadastrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmCadastrarCli frmChild = new FrmCadastrarCli();
+            frmChild.MdiParent = this;
+
+            //Verifica se o form ja esta aberto se estiver da um focus no form.
+            bool _found = false;
+
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmCadastrarCli)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+
+            if (!_found)
+            {
+                FrmCadastrarCli _form2 = new FrmCadastrarCli();
+                frmChild.Text = "Cadastro de Clientes";
+                frmChild.Show();
+            }
+        }
+
+        /// <summary>
+        /// Click do Botão para abrir a o FrmCadastroUsuarios
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaCli frmChild = new FrmConsultaCli();
+            frmChild.MdiParent = this;
+
+            //Verifica se o form ja esta aberto se estiver da um focus no form.
+            bool _found = false;
+
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmConsultaCli)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+
+            if (!_found)
+            {
+                FrmConsultaCli _form2 = new FrmConsultaCli();
+                frmChild.Text = "Consulta Clientes";
+                frmChild.Show();
+            }
+        }
+
+        #endregion
+
+        #region Menu: Vendas
+
+        #endregion
+
     }
 }

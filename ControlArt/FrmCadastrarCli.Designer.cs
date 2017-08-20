@@ -61,7 +61,7 @@
             this.dtIdade.Location = new System.Drawing.Point(258, 255);
             this.dtIdade.Name = "dtIdade";
             this.dtIdade.Size = new System.Drawing.Size(101, 20);
-            this.dtIdade.TabIndex = 3;
+            this.dtIdade.TabIndex = 4;
             this.dtIdade.Value = new System.DateTime(2017, 6, 3, 0, 0, 0, 0);
             // 
             // radioButtonM
@@ -70,7 +70,7 @@
             this.radioButtonM.Location = new System.Drawing.Point(262, 298);
             this.radioButtonM.Name = "radioButtonM";
             this.radioButtonM.Size = new System.Drawing.Size(34, 17);
-            this.radioButtonM.TabIndex = 4;
+            this.radioButtonM.TabIndex = 5;
             this.radioButtonM.TabStop = true;
             this.radioButtonM.Text = "M";
             this.radioButtonM.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.txtTel.Location = new System.Drawing.Point(258, 207);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(125, 20);
-            this.txtTel.TabIndex = 12;
+            this.txtTel.TabIndex = 3;
             // 
             // FrmCadastrarCli
             // 

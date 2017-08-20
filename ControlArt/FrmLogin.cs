@@ -21,12 +21,44 @@ namespace ControlArt
         }
 
         #region "Eventos"
+        /// <summary>
+        /// KeyDown> Ao teclar enter irá simular o botão entrar
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (ValidaLoginSenha())
+                {
+                    if (buscaUsuario())
+                    {
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login ou Senha Invalidos!", "Login ControlArt", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
+        }
 
+        /// <summary>
+        /// Click do Botão Sair
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Click do Botão Entrar
+        /// </summary>
+        /// <param name="sender">o</param>
+        /// <param name="e">o</param>
         private void btnEntrar_Click(object sender, EventArgs e)
         {
 
@@ -47,6 +79,9 @@ namespace ControlArt
 
         #region "Métodos"
 
+        /// <summary>
+        /// Metodo Buscar usuário
+        /// </summary>
         private bool buscaUsuario()
         {
             try
@@ -80,6 +115,9 @@ namespace ControlArt
 
         #region "Validações"
 
+        /// <summary>
+        /// Metodo Valida Login e Senha
+        /// </summary>
         private bool ValidaLoginSenha()
         {
             try

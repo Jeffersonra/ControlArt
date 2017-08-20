@@ -23,6 +23,11 @@ namespace ControlArt
         }
 
         #region "Eventos"
+        /// <summary>
+        /// Click do botão Gravar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// /// <param name="e"></param>
         private void btnGrava_Click(object sender, EventArgs e)
         {
                 if (ValidaCampos())
@@ -37,6 +42,11 @@ namespace ControlArt
                 }   
         }
 
+        /// <summary>
+        /// Click do botão Sair
+        /// </summary>
+        /// <param name="sender"></param>
+        /// /// <param name="e"></param>
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -45,6 +55,9 @@ namespace ControlArt
 
         #region "Métodos"
 
+        /// <summary>
+        /// Metodo para inserir dados na base Mysql
+        /// </summary>
         private bool InsereDados()
         {
             try
@@ -68,6 +81,7 @@ namespace ControlArt
                     radioButtonF.Checked = false;
                     radioButtonM.Checked = false;
                     sexo = "";
+                    txtTel.Text = "";
                     return true;
                 }
                 else
@@ -86,6 +100,9 @@ namespace ControlArt
 
         #region "Validações"
 
+        /// <summary>
+        /// Metodo que valida os campos digitados.
+        /// </summary>
         private bool ValidaCampos()
         {
             try
