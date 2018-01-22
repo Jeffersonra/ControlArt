@@ -74,7 +74,7 @@ namespace ControlArt
                                    "','" + insertDate +
                                    "','" + txtTel.Text + "')";
                 // valida execução
-                if (cnn.execute_non_query())
+                if (cnn.GetExecute_non_query())
                 {
                     txtEmail.Text = "";
                     txtNome.Text = "";
@@ -178,5 +178,10 @@ namespace ControlArt
         }
 
         #endregion
+
+        private void radioButtonF_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

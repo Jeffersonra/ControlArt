@@ -168,5 +168,29 @@ namespace ControlArt
 
         #endregion
 
+        private void cadastrarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmCadastroProduto frmChild = new FrmCadastroProduto();
+            frmChild.MdiParent = this;
+
+            //Verifica se o form ja esta aberto se estiver da um focus no form.
+            bool _found = false;
+
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmCadastrarCli)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+
+            if (!_found)
+            {
+                FrmCadastrarCli _form2 = new FrmCadastrarCli();
+                frmChild.Text = "Consulta Produto";
+                frmChild.Show();
+            }
+        }
     }
 }

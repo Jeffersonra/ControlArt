@@ -7,13 +7,13 @@ namespace ControlArt.ClassDB
     {
 
         // atributos //
-        private string string_conexao = "Persist Security Info=False; server=;database=;Uid=; Pwd=";
+        private string string_conexao = "Persist Security Info=False; server=confusart-db.mysql.uhserver.com;database=confusart_db;Uid=jeffersonsousa; Pwd=Jeff@2124";
         public string query_string = "";
 
         #region metodos
 
         // metodos //
-        public MySqlDataReader mysql_data_reader()
+        public MySqlDataReader Mysql_data_reader()
         {
             MySqlConnection conexao = new MySqlConnection();
             conexao.ConnectionString = this.string_conexao;
@@ -28,7 +28,7 @@ namespace ControlArt.ClassDB
             return reader;
         }
 
-        public DataTable mysql_data_adapter()
+        public DataTable Mysql_data_adapter()
         {
             DataTable dtb = new DataTable();
 
@@ -50,7 +50,7 @@ namespace ControlArt.ClassDB
             return dtb;
         }
 
-        public bool execute_non_query()
+        public bool GetExecute_non_query()
         {
             try
             {

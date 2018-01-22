@@ -16,11 +16,12 @@ namespace ControlArt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FrmLogin login = new FrmLogin();
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                Application.Run(new FrmPrincipal());
-            }
+            Application.Run(new FrmPrincipal());
+            //FrmLogin login = new FrmLogin();
+            //if (login.ShowDialog() == DialogResult.OK)
+            //{
+            //    Application.Run(new FrmPrincipal());
+            //}
         }
     }
 }

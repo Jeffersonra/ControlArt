@@ -92,9 +92,9 @@ namespace ControlArt
 
                 cnn.query_string = "SELECT * FROM confusart_db.tbUsuarios WHERE LOGIN = '" + txtLogin.Text + "' AND SENHA = '" + txtSenha.Text + "' AND STATUS = 'A';";
 
-                cnn.execute_non_query();
+                cnn.GetExecute_non_query();
 
-                var resultado = cnn.mysql_data_reader().Read().ToString();
+                var resultado = cnn.Mysql_data_reader().Read().ToString();
                 if (resultado == "True")
                 {
                     return true;

@@ -95,7 +95,7 @@ namespace ControlArt
                                     + "A');";
 
                 // valida execução
-                if (cnn.execute_non_query())
+                if (cnn.GetExecute_non_query())
                 {
                     txtLogin.Text = "";
                     txtNome.Text = "";
@@ -126,7 +126,7 @@ namespace ControlArt
             cnn.query_string = "SELECT login FROM confusart_db.tbUsuarios order by Nome asc";
 
             DataTable tabela = new DataTable();
-            tabela = cnn.mysql_data_adapter();
+            tabela = cnn.Mysql_data_adapter();
 
             foreach (DataRow linha in tabela.Rows)
             {
@@ -166,7 +166,7 @@ namespace ControlArt
                 cnn.query_string = "UPDATE tbUsuarios SET Senha = '" + txtSenha.Text 
                                     + "' WHERE Login = '" + usuario + "';";
 
-                if (cnn.execute_non_query())
+                if (cnn.GetExecute_non_query())
                 {
                     MessageBox.Show("Senha Redefinida com Sucesso!", "Redefinir Senha!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtSenha.Text = "";

@@ -36,7 +36,7 @@ namespace ControlArt
 
             cnn.query_string = "SELECT ID,NOME,EMAIL, date_format(DTNASCIMENTO, '%d/%m/%Y') as DT_NASCIMENTO, SEXO, TELEFONE FROM confusart_db.tbclientes order by ID asc;";
 
-            tabela = cnn.mysql_data_adapter();
+            tabela = cnn.Mysql_data_adapter();
 
             dataGridViewCli.DataSource = tabela;
 

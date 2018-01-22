@@ -49,7 +49,7 @@
             this.btnGrava.Location = new System.Drawing.Point(517, 298);
             this.btnGrava.Name = "btnGrava";
             this.btnGrava.Size = new System.Drawing.Size(101, 43);
-            this.btnGrava.TabIndex = 6;
+            this.btnGrava.TabIndex = 7;
             this.btnGrava.Text = "Gravar";
             this.btnGrava.UseVisualStyleBackColor = true;
             this.btnGrava.Click += new System.EventHandler(this.btnGrava_Click);
@@ -81,10 +81,11 @@
             this.radioButtonF.Location = new System.Drawing.Point(305, 298);
             this.radioButtonF.Name = "radioButtonF";
             this.radioButtonF.Size = new System.Drawing.Size(31, 17);
-            this.radioButtonF.TabIndex = 5;
+            this.radioButtonF.TabIndex = 6;
             this.radioButtonF.TabStop = true;
             this.radioButtonF.Text = "F";
             this.radioButtonF.UseVisualStyleBackColor = true;
+            this.radioButtonF.CheckedChanged += new System.EventHandler(this.radioButtonF_CheckedChanged);
             // 
             // label1
             // 
@@ -151,7 +152,7 @@
             this.btnSair.Location = new System.Drawing.Point(797, 366);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 7;
+            this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
