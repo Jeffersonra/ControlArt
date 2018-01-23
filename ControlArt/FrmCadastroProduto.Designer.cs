@@ -47,28 +47,28 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.lblAlteraDetalhe = new System.Windows.Forms.Label();
             this.lblNomeDetalhe = new System.Windows.Forms.Label();
+            this.txtAlturaDetalhe = new System.Windows.Forms.TextBox();
             this.txtNomeDetalhe = new System.Windows.Forms.TextBox();
             this.lblComprimentoDetalhe = new System.Windows.Forms.Label();
+            this.txtComprimentoDetalhe = new System.Windows.Forms.TextBox();
             this.lblTamanhoDetalhe = new System.Windows.Forms.Label();
             this.radDetalheP = new System.Windows.Forms.RadioButton();
             this.radDetalheG = new System.Windows.Forms.RadioButton();
             this.lblLarguraDetalhe = new System.Windows.Forms.Label();
             this.radDetalheM = new System.Windows.Forms.RadioButton();
             this.lblDimensoesDetalhes = new System.Windows.Forms.Label();
+            this.txtLarguraDetalhe = new System.Windows.Forms.TextBox();
             this.grdDetalhes = new System.Windows.Forms.DataGridView();
             this.menuStripProduto = new System.Windows.Forms.MenuStrip();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtModelo = new System.Windows.Forms.TextBox();
-            this.txtAlturaDetalhe = new System.Windows.Forms.TextBox();
-            this.txtComprimentoDetalhe = new System.Windows.Forms.TextBox();
-            this.txtLarguraDetalhe = new System.Windows.Forms.TextBox();
-            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.txtLargura = new System.Windows.Forms.TextBox();
             this.txtAltura = new System.Windows.Forms.TextBox();
             this.txtComprimento = new System.Windows.Forms.TextBox();
-            this.txtLargura = new System.Windows.Forms.TextBox();
+            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.grpDetalhes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalhes)).BeginInit();
@@ -140,14 +140,14 @@
             this.lblLargura.AutoSize = true;
             this.lblLargura.Location = new System.Drawing.Point(9, 183);
             this.lblLargura.Name = "lblLargura";
-            this.lblLargura.Size = new System.Drawing.Size(43, 13);
+            this.lblLargura.Size = new System.Drawing.Size(49, 13);
             this.lblLargura.TabIndex = 10;
-            this.lblLargura.Text = "Largura";
+            this.lblLargura.Text = "Largura: ";
             // 
             // lblComprimento
             // 
             this.lblComprimento.AutoSize = true;
-            this.lblComprimento.Location = new System.Drawing.Point(9, 233);
+            this.lblComprimento.Location = new System.Drawing.Point(9, 261);
             this.lblComprimento.Name = "lblComprimento";
             this.lblComprimento.Size = new System.Drawing.Size(68, 13);
             this.lblComprimento.TabIndex = 12;
@@ -156,7 +156,7 @@
             // lblAltura
             // 
             this.lblAltura.AutoSize = true;
-            this.lblAltura.Location = new System.Drawing.Point(9, 279);
+            this.lblAltura.Location = new System.Drawing.Point(8, 222);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(34, 13);
             this.lblAltura.TabIndex = 14;
@@ -165,7 +165,7 @@
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(12, 322);
+            this.lblPeso.Location = new System.Drawing.Point(9, 300);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(31, 13);
             this.lblPeso.TabIndex = 16;
@@ -247,6 +247,7 @@
             this.btnSalvar.TabIndex = 32;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // lblAlteraDetalhe
             // 
@@ -266,9 +267,19 @@
             this.lblNomeDetalhe.TabIndex = 20;
             this.lblNomeDetalhe.Text = "Nome Detalhe";
             // 
+            // txtAlturaDetalhe
+            // 
+            this.txtAlturaDetalhe.Location = new System.Drawing.Point(10, 236);
+            this.txtAlturaDetalhe.Name = "txtAlturaDetalhe";
+            this.txtAlturaDetalhe.Size = new System.Drawing.Size(221, 20);
+            this.txtAlturaDetalhe.TabIndex = 30;
+            this.txtAlturaDetalhe.TextChanged += new System.EventHandler(this.txtAlturaDetalhe_TextChanged);
+            // 
             // txtNomeDetalhe
             // 
+            this.txtNomeDetalhe.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeDetalhe.Location = new System.Drawing.Point(10, 70);
+            this.txtNomeDetalhe.MaxLength = 150;
             this.txtNomeDetalhe.Name = "txtNomeDetalhe";
             this.txtNomeDetalhe.Size = new System.Drawing.Size(221, 20);
             this.txtNomeDetalhe.TabIndex = 19;
@@ -281,6 +292,14 @@
             this.lblComprimentoDetalhe.Size = new System.Drawing.Size(68, 13);
             this.lblComprimentoDetalhe.TabIndex = 29;
             this.lblComprimentoDetalhe.Text = "Comprimento";
+            // 
+            // txtComprimentoDetalhe
+            // 
+            this.txtComprimentoDetalhe.Location = new System.Drawing.Point(10, 197);
+            this.txtComprimentoDetalhe.Name = "txtComprimentoDetalhe";
+            this.txtComprimentoDetalhe.Size = new System.Drawing.Size(221, 20);
+            this.txtComprimentoDetalhe.TabIndex = 28;
+            this.txtComprimentoDetalhe.TextChanged += new System.EventHandler(this.txtComprimentoDetalhe_TextChanged);
             // 
             // lblTamanhoDetalhe
             // 
@@ -342,6 +361,14 @@
             this.lblDimensoesDetalhes.TabIndex = 26;
             this.lblDimensoesDetalhes.Text = "Dimensões";
             // 
+            // txtLarguraDetalhe
+            // 
+            this.txtLarguraDetalhe.Location = new System.Drawing.Point(10, 159);
+            this.txtLarguraDetalhe.Name = "txtLarguraDetalhe";
+            this.txtLarguraDetalhe.Size = new System.Drawing.Size(221, 20);
+            this.txtLarguraDetalhe.TabIndex = 21;
+            this.txtLarguraDetalhe.TextChanged += new System.EventHandler(this.txtLarguraDetalhe_TextChanged);
+            // 
             // grdDetalhes
             // 
             this.grdDetalhes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -401,61 +428,46 @@
             this.consultarToolStripMenuItem.Size = new System.Drawing.Size(76, 72);
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
-            // txtModelo
+            // txtLargura
             // 
-            this.txtModelo.Location = new System.Drawing.Point(11, 95);
-            this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(221, 20);
-            this.txtModelo.TabIndex = 20;
-            // 
-            // txtAlturaDetalhe
-            // 
-            this.txtAlturaDetalhe.Location = new System.Drawing.Point(11, 236);
-            this.txtAlturaDetalhe.Name = "txtAlturaDetalhe";
-            this.txtAlturaDetalhe.Size = new System.Drawing.Size(221, 20);
-            this.txtAlturaDetalhe.TabIndex = 30;
-            // 
-            // txtComprimentoDetalhe
-            // 
-            this.txtComprimentoDetalhe.Location = new System.Drawing.Point(9, 197);
-            this.txtComprimentoDetalhe.Name = "txtComprimentoDetalhe";
-            this.txtComprimentoDetalhe.Size = new System.Drawing.Size(221, 20);
-            this.txtComprimentoDetalhe.TabIndex = 28;
-            // 
-            // txtLarguraDetalhe
-            // 
-            this.txtLarguraDetalhe.Location = new System.Drawing.Point(10, 159);
-            this.txtLarguraDetalhe.Name = "txtLarguraDetalhe";
-            this.txtLarguraDetalhe.Size = new System.Drawing.Size(221, 20);
-            this.txtLarguraDetalhe.TabIndex = 21;
-            // 
-            // txtPeso
-            // 
-            this.txtPeso.Location = new System.Drawing.Point(15, 338);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(221, 20);
-            this.txtPeso.TabIndex = 12;
+            this.txtLargura.Location = new System.Drawing.Point(11, 199);
+            this.txtLargura.Name = "txtLargura";
+            this.txtLargura.Size = new System.Drawing.Size(221, 20);
+            this.txtLargura.TabIndex = 34;
+            this.txtLargura.TextChanged += new System.EventHandler(this.txtLargura_TextChanged_1);
             // 
             // txtAltura
             // 
-            this.txtAltura.Location = new System.Drawing.Point(12, 295);
+            this.txtAltura.Location = new System.Drawing.Point(11, 238);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(221, 20);
-            this.txtAltura.TabIndex = 11;
+            this.txtAltura.TabIndex = 35;
+            this.txtAltura.TextChanged += new System.EventHandler(this.txtAltura_TextChanged);
             // 
             // txtComprimento
             // 
-            this.txtComprimento.Location = new System.Drawing.Point(12, 249);
+            this.txtComprimento.Location = new System.Drawing.Point(12, 277);
             this.txtComprimento.Name = "txtComprimento";
             this.txtComprimento.Size = new System.Drawing.Size(221, 20);
-            this.txtComprimento.TabIndex = 10;
+            this.txtComprimento.TabIndex = 36;
+            this.txtComprimento.TextChanged += new System.EventHandler(this.txtComprimento_TextChanged);
             // 
-            // txtLargura
+            // txtPeso
             // 
-            this.txtLargura.Location = new System.Drawing.Point(12, 199);
-            this.txtLargura.Name = "txtLargura";
-            this.txtLargura.Size = new System.Drawing.Size(221, 20);
-            this.txtLargura.TabIndex = 9;
+            this.txtPeso.Location = new System.Drawing.Point(12, 316);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(221, 20);
+            this.txtPeso.TabIndex = 37;
+            this.txtPeso.TextChanged += new System.EventHandler(this.txtPeso_TextChanged);
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtModelo.Location = new System.Drawing.Point(11, 95);
+            this.txtModelo.MaxLength = 150;
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(221, 20);
+            this.txtModelo.TabIndex = 38;
             // 
             // FrmCadastroProduto
             // 
@@ -463,21 +475,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 386);
             this.Controls.Add(this.txtModelo);
+            this.Controls.Add(this.txtPeso);
+            this.Controls.Add(this.txtComprimento);
+            this.Controls.Add(this.txtAltura);
+            this.Controls.Add(this.txtLargura);
             this.Controls.Add(this.grdDetalhes);
             this.Controls.Add(this.grpDetalhes);
             this.Controls.Add(this.lblPeso);
-            this.Controls.Add(this.txtPeso);
             this.Controls.Add(this.lblAltura);
-            this.Controls.Add(this.txtAltura);
             this.Controls.Add(this.lblComprimento);
-            this.Controls.Add(this.txtComprimento);
             this.Controls.Add(this.lblLargura);
             this.Controls.Add(this.lblDimensoes);
             this.Controls.Add(this.radM);
             this.Controls.Add(this.radG);
             this.Controls.Add(this.radP);
             this.Controls.Add(this.lblTamanho);
-            this.Controls.Add(this.txtLargura);
             this.Controls.Add(this.lblModelo);
             this.Controls.Add(this.menuStripProduto);
             this.MainMenuStrip = this.menuStripProduto;
@@ -533,13 +545,13 @@
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDetalhes;
-        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtAlturaDetalhe;
         private System.Windows.Forms.TextBox txtComprimentoDetalhe;
         private System.Windows.Forms.TextBox txtLarguraDetalhe;
-        private System.Windows.Forms.TextBox txtPeso;
+        private System.Windows.Forms.TextBox txtLargura;
         private System.Windows.Forms.TextBox txtAltura;
         private System.Windows.Forms.TextBox txtComprimento;
-        private System.Windows.Forms.TextBox txtLargura;
+        private System.Windows.Forms.TextBox txtPeso;
+        private System.Windows.Forms.TextBox txtModelo;
     }
 }

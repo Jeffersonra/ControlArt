@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ControlArt.Funcoes;
@@ -16,8 +17,6 @@ namespace ControlArt
         public FrmCadastroProduto()
         {
             InitializeComponent();
-
-
         }
 
         private void FrmCadastroProduto_Load(object sender, EventArgs e)
@@ -35,7 +34,10 @@ namespace ControlArt
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if(!ValidaCamposProduto())
+            {
+                MessageBox.Show("Por favor, Preencher todos os campos do Produto");   
+            }
         }
 
         private void apagarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,6 +68,7 @@ namespace ControlArt
                 this.txtComprimentoDetalhe.Enabled = false;
                 this.txtLarguraDetalhe.Enabled = false;
                 this.txtNomeDetalhe.Enabled = false;
+                this.btnSalvar.Enabled = false;
             }
         }
         private void radDetalheSim_CheckedChanged_1(object sender, EventArgs e)
@@ -79,10 +82,137 @@ namespace ControlArt
                 this.txtComprimentoDetalhe.Enabled = true;
                 this.txtLarguraDetalhe.Enabled = true;
                 this.txtNomeDetalhe.Enabled = true;
+                this.btnSalvar.Enabled = true;
             }
         }
         #endregion
 
+        #region Validações
+
+        /// <summary>
+        /// Metodo para Validar Dados digitados dos Produtos
+        /// </summary>
+        private bool ValidaCamposProduto()
+        {
+            try
+            {
+                if (this.txtModelo.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtLargura.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtComprimento.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtAltura.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtPeso.Text == "")
+                {
+                    return false;
+                }
+                else if (radP.Checked == false && radM.Checked == false && radG.Checked == false)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            } 
+        }
+
+        /// <summary>
+        /// Metodo para Validar Dados digitados dos detalhes 
+        /// </summary>
+        private bool ValidaCamposProdutosDetalhes()
+        {
+            try
+            {
+                if (this.txtNomeDetalhe.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtLarguraDetalhe.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtComprimentoDetalhe.Text == "")
+                {
+                    return false;
+                }
+                else if (this.txtAlturaDetalhe.Text == "")
+                {
+                    return false;
+                }
+                else if (radDetalheP.Checked == false && radDetalheM.Checked == false && radDetalheG.Checked == false)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #region TextBoxValidação
+
+        private void txtLargura_TextChanged_1(object sender, EventArgs e)
+        {
+            txtLargura.Text = Regex.Replace(txtLargura.Text, "[^0-9]", "");
+        }
+
+        private void txtAltura_TextChanged(object sender, EventArgs e)
+        {
+            txtAltura.Text = Regex.Replace(txtAltura.Text, "[^0-9]", "");
+        }
+
+        private void txtComprimento_TextChanged(object sender, EventArgs e)
+        {
+            txtComprimento.Text = Regex.Replace(txtComprimento.Text, "[^0-9]", "");
+        }
+
+        private void txtPeso_TextChanged(object sender, EventArgs e)
+        {
+            txtPeso.Text = Regex.Replace(txtPeso.Text, "[^0-9]", "");
+        }
+
+        private void txtLarguraDetalhe_TextChanged(object sender, EventArgs e)
+        {
+            txtLarguraDetalhe.Text = Regex.Replace(txtLarguraDetalhe.Text, "[^0-9]", "");
+        }
+
+        private void txtComprimentoDetalhe_TextChanged(object sender, EventArgs e)
+        {
+            txtComprimentoDetalhe.Text = Regex.Replace(txtComprimentoDetalhe.Text, "[^0-9]", "");
+        }
+
+        private void txtAlturaDetalhe_TextChanged(object sender, EventArgs e)
+        {
+            txtAlturaDetalhe.Text = Regex.Replace(txtAlturaDetalhe.Text, "[^0-9]", "");
+        }
+        #endregion
+
+        #endregion
+        
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (!ValidaCamposProdutosDetalhes())
+            {
+                MessageBox.Show("Por favor, Preencher todos os campos dos Detalhes");
+            }
+        }
 
     }
 }
