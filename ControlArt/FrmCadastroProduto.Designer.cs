@@ -61,7 +61,7 @@
             this.grdDetalhes = new System.Windows.Forms.DataGridView();
             this.menuStripProduto = new System.Windows.Forms.MenuStrip();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtLargura = new System.Windows.Forms.TextBox();
@@ -69,16 +69,18 @@
             this.txtComprimento = new System.Windows.Forms.TextBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
+            this.grpProduto = new System.Windows.Forms.GroupBox();
             this.grpDetalhes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalhes)).BeginInit();
             this.menuStripProduto.SuspendLayout();
+            this.grpProduto.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblModelo
             // 
             this.lblModelo.AutoSize = true;
-            this.lblModelo.Location = new System.Drawing.Point(8, 79);
+            this.lblModelo.Location = new System.Drawing.Point(8, 26);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(42, 13);
             this.lblModelo.TabIndex = 3;
@@ -87,7 +89,7 @@
             // lblTamanho
             // 
             this.lblTamanho.AutoSize = true;
-            this.lblTamanho.Location = new System.Drawing.Point(8, 118);
+            this.lblTamanho.Location = new System.Drawing.Point(8, 65);
             this.lblTamanho.Name = "lblTamanho";
             this.lblTamanho.Size = new System.Drawing.Size(52, 13);
             this.lblTamanho.TabIndex = 5;
@@ -96,7 +98,7 @@
             // radP
             // 
             this.radP.AutoSize = true;
-            this.radP.Location = new System.Drawing.Point(11, 134);
+            this.radP.Location = new System.Drawing.Point(11, 81);
             this.radP.Name = "radP";
             this.radP.Size = new System.Drawing.Size(32, 17);
             this.radP.TabIndex = 6;
@@ -107,7 +109,7 @@
             // radG
             // 
             this.radG.AutoSize = true;
-            this.radG.Location = new System.Drawing.Point(89, 134);
+            this.radG.Location = new System.Drawing.Point(91, 81);
             this.radG.Name = "radG";
             this.radG.Size = new System.Drawing.Size(33, 17);
             this.radG.TabIndex = 8;
@@ -118,7 +120,7 @@
             // radM
             // 
             this.radM.AutoSize = true;
-            this.radM.Location = new System.Drawing.Point(49, 134);
+            this.radM.Location = new System.Drawing.Point(51, 81);
             this.radM.Name = "radM";
             this.radM.Size = new System.Drawing.Size(34, 17);
             this.radM.TabIndex = 7;
@@ -129,7 +131,7 @@
             // lblDimensoes
             // 
             this.lblDimensoes.AutoSize = true;
-            this.lblDimensoes.Location = new System.Drawing.Point(8, 165);
+            this.lblDimensoes.Location = new System.Drawing.Point(8, 101);
             this.lblDimensoes.Name = "lblDimensoes";
             this.lblDimensoes.Size = new System.Drawing.Size(59, 13);
             this.lblDimensoes.TabIndex = 9;
@@ -138,7 +140,7 @@
             // lblLargura
             // 
             this.lblLargura.AutoSize = true;
-            this.lblLargura.Location = new System.Drawing.Point(9, 183);
+            this.lblLargura.Location = new System.Drawing.Point(9, 114);
             this.lblLargura.Name = "lblLargura";
             this.lblLargura.Size = new System.Drawing.Size(49, 13);
             this.lblLargura.TabIndex = 10;
@@ -147,7 +149,7 @@
             // lblComprimento
             // 
             this.lblComprimento.AutoSize = true;
-            this.lblComprimento.Location = new System.Drawing.Point(9, 261);
+            this.lblComprimento.Location = new System.Drawing.Point(9, 192);
             this.lblComprimento.Name = "lblComprimento";
             this.lblComprimento.Size = new System.Drawing.Size(68, 13);
             this.lblComprimento.TabIndex = 12;
@@ -156,7 +158,7 @@
             // lblAltura
             // 
             this.lblAltura.AutoSize = true;
-            this.lblAltura.Location = new System.Drawing.Point(8, 222);
+            this.lblAltura.Location = new System.Drawing.Point(8, 153);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(34, 13);
             this.lblAltura.TabIndex = 14;
@@ -165,7 +167,7 @@
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(9, 300);
+            this.lblPeso.Location = new System.Drawing.Point(9, 231);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(31, 13);
             this.lblPeso.TabIndex = 16;
@@ -193,7 +195,7 @@
             this.grpDetalhes.Size = new System.Drawing.Size(239, 300);
             this.grpDetalhes.TabIndex = 17;
             this.grpDetalhes.TabStop = false;
-            this.grpDetalhes.Text = "Detalhes";
+            this.grpDetalhes.Text = "Detalhes do Produto";
             // 
             // groupBox1
             // 
@@ -383,7 +385,7 @@
             this.menuStripProduto.AutoSize = false;
             this.menuStripProduto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novoToolStripMenuItem,
-            this.editarToolStripMenuItem,
+            this.salvarToolStripMenuItem,
             this.apagarToolStripMenuItem,
             this.consultarToolStripMenuItem});
             this.menuStripProduto.Location = new System.Drawing.Point(0, 0);
@@ -404,13 +406,13 @@
             this.novoToolStripMenuItem.ToolTipText = "Novo";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
-            // editarToolStripMenuItem
+            // salvarToolStripMenuItem
             // 
-            this.editarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editarToolStripMenuItem.Image")));
-            this.editarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(76, 72);
-            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            this.salvarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripMenuItem.Image")));
+            this.salvarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
+            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(76, 72);
+            this.salvarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // apagarToolStripMenuItem
             // 
@@ -430,7 +432,7 @@
             // 
             // txtLargura
             // 
-            this.txtLargura.Location = new System.Drawing.Point(11, 199);
+            this.txtLargura.Location = new System.Drawing.Point(11, 130);
             this.txtLargura.Name = "txtLargura";
             this.txtLargura.Size = new System.Drawing.Size(221, 20);
             this.txtLargura.TabIndex = 34;
@@ -438,7 +440,7 @@
             // 
             // txtAltura
             // 
-            this.txtAltura.Location = new System.Drawing.Point(11, 238);
+            this.txtAltura.Location = new System.Drawing.Point(11, 169);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(221, 20);
             this.txtAltura.TabIndex = 35;
@@ -446,7 +448,7 @@
             // 
             // txtComprimento
             // 
-            this.txtComprimento.Location = new System.Drawing.Point(12, 277);
+            this.txtComprimento.Location = new System.Drawing.Point(12, 208);
             this.txtComprimento.Name = "txtComprimento";
             this.txtComprimento.Size = new System.Drawing.Size(221, 20);
             this.txtComprimento.TabIndex = 36;
@@ -454,7 +456,7 @@
             // 
             // txtPeso
             // 
-            this.txtPeso.Location = new System.Drawing.Point(12, 316);
+            this.txtPeso.Location = new System.Drawing.Point(12, 247);
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(221, 20);
             this.txtPeso.TabIndex = 37;
@@ -463,34 +465,44 @@
             // txtModelo
             // 
             this.txtModelo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtModelo.Location = new System.Drawing.Point(11, 95);
+            this.txtModelo.Location = new System.Drawing.Point(11, 42);
             this.txtModelo.MaxLength = 150;
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(221, 20);
             this.txtModelo.TabIndex = 38;
+            // 
+            // grpProduto
+            // 
+            this.grpProduto.Controls.Add(this.txtModelo);
+            this.grpProduto.Controls.Add(this.txtPeso);
+            this.grpProduto.Controls.Add(this.txtComprimento);
+            this.grpProduto.Controls.Add(this.txtAltura);
+            this.grpProduto.Controls.Add(this.txtLargura);
+            this.grpProduto.Controls.Add(this.lblPeso);
+            this.grpProduto.Controls.Add(this.lblAltura);
+            this.grpProduto.Controls.Add(this.lblComprimento);
+            this.grpProduto.Controls.Add(this.lblLargura);
+            this.grpProduto.Controls.Add(this.lblDimensoes);
+            this.grpProduto.Controls.Add(this.radM);
+            this.grpProduto.Controls.Add(this.radG);
+            this.grpProduto.Controls.Add(this.radP);
+            this.grpProduto.Controls.Add(this.lblTamanho);
+            this.grpProduto.Controls.Add(this.lblModelo);
+            this.grpProduto.Location = new System.Drawing.Point(12, 79);
+            this.grpProduto.Name = "grpProduto";
+            this.grpProduto.Size = new System.Drawing.Size(243, 300);
+            this.grpProduto.TabIndex = 39;
+            this.grpProduto.TabStop = false;
+            this.grpProduto.Text = "Produto";
             // 
             // FrmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 386);
-            this.Controls.Add(this.txtModelo);
-            this.Controls.Add(this.txtPeso);
-            this.Controls.Add(this.txtComprimento);
-            this.Controls.Add(this.txtAltura);
-            this.Controls.Add(this.txtLargura);
+            this.Controls.Add(this.grpProduto);
             this.Controls.Add(this.grdDetalhes);
             this.Controls.Add(this.grpDetalhes);
-            this.Controls.Add(this.lblPeso);
-            this.Controls.Add(this.lblAltura);
-            this.Controls.Add(this.lblComprimento);
-            this.Controls.Add(this.lblLargura);
-            this.Controls.Add(this.lblDimensoes);
-            this.Controls.Add(this.radM);
-            this.Controls.Add(this.radG);
-            this.Controls.Add(this.radP);
-            this.Controls.Add(this.lblTamanho);
-            this.Controls.Add(this.lblModelo);
             this.Controls.Add(this.menuStripProduto);
             this.MainMenuStrip = this.menuStripProduto;
             this.MaximizeBox = false;
@@ -506,8 +518,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalhes)).EndInit();
             this.menuStripProduto.ResumeLayout(false);
             this.menuStripProduto.PerformLayout();
+            this.grpProduto.ResumeLayout(false);
+            this.grpProduto.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -540,7 +553,7 @@
         private System.Windows.Forms.DataGridView grdDetalhes;
         private System.Windows.Forms.MenuStrip menuStripProduto;
         private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem apagarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -553,5 +566,6 @@
         private System.Windows.Forms.TextBox txtComprimento;
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.GroupBox grpProduto;
     }
 }

@@ -9,11 +9,17 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ControlArt.Funcoes;
+using ControlArt.ClassDB;
 
 namespace ControlArt
 {
     public partial class FrmCadastroProduto : Form
     {
+        private DateTime data;
+        private string Insertdata;
+        private string tamanho;
+        private string codigoModelo;
+
         public FrmCadastroProduto()
         {
             InitializeComponent();
@@ -25,18 +31,29 @@ namespace ControlArt
             this.radP.Checked = false;
         }
 
+
+        //Instancia Classe para tratar campos do Form
+        TrataCampos TrataCampos = new TrataCampos();
+
         #region MenuStripo
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LimpaCampos limpar = new LimpaCampos();
-            limpar.ClearForm(this);
+            TrataCampos.LimparForms(this);
         }
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(!ValidaCamposProduto())
+            if (!ValidaCamposProduto())
             {
-                MessageBox.Show("Por favor, Preencher todos os campos do Produto");   
+                MessageBox.Show("Por favor, Preencher todos os campos do Produto");
+            }
+            else if (InsereProduto())
+            {
+                MessageBox.Show("Produto Cadastrado");
+            }
+            else
+            {
+                MessageBox.Show("Erro ao cadastrar Produto");
             }
         }
 
@@ -126,7 +143,7 @@ namespace ControlArt
             catch (Exception)
             {
                 throw;
-            } 
+            }
         }
 
         /// <summary>
@@ -170,47 +187,109 @@ namespace ControlArt
 
         private void txtLargura_TextChanged_1(object sender, EventArgs e)
         {
-            txtLargura.Text = Regex.Replace(txtLargura.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtLargura);
         }
 
         private void txtAltura_TextChanged(object sender, EventArgs e)
         {
-            txtAltura.Text = Regex.Replace(txtAltura.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtAltura);
         }
 
         private void txtComprimento_TextChanged(object sender, EventArgs e)
         {
-            txtComprimento.Text = Regex.Replace(txtComprimento.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtComprimento);
         }
 
         private void txtPeso_TextChanged(object sender, EventArgs e)
         {
-            txtPeso.Text = Regex.Replace(txtPeso.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtPeso);
         }
 
         private void txtLarguraDetalhe_TextChanged(object sender, EventArgs e)
         {
-            txtLarguraDetalhe.Text = Regex.Replace(txtLarguraDetalhe.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtLarguraDetalhe);
         }
 
         private void txtComprimentoDetalhe_TextChanged(object sender, EventArgs e)
         {
-            txtComprimentoDetalhe.Text = Regex.Replace(txtComprimentoDetalhe.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtComprimentoDetalhe);
         }
 
         private void txtAlturaDetalhe_TextChanged(object sender, EventArgs e)
         {
-            txtAlturaDetalhe.Text = Regex.Replace(txtAlturaDetalhe.Text, "[^0-9]", "");
+            TrataCampos.RecebeApenasNumeros(this.txtAlturaDetalhe);
         }
         #endregion
 
         #endregion
-        
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (!ValidaCamposProdutosDetalhes())
             {
                 MessageBox.Show("Por favor, Preencher todos os campos dos Detalhes");
+            }
+        }
+
+        private bool InsereProduto()
+        {
+            try
+            {
+                data = DateTime.Now;
+                Insertdata = data.Year + "-" + data.Month + "-" + data.Day;
+
+                foreach (Control ctrl in this.grpProduto.Controls)
+                {
+                    //Testa para verificar se o Controle é um RadioButton
+                    if (ctrl.GetType().ToString() == "System.Windows.Forms.RadioButton")
+                        if (((RadioButton)ctrl).Checked == true)
+                        {
+                            tamanho = ctrl.Text;
+                        }
+                }
+
+                codigoModelo = txtModelo.Text.Substring(0, 3) + tamanho;
+                //Conecta Sql
+                Conecta cnn = new Conecta();
+                cnn.query_string = "";
+
+                cnn.query_string = "INSERT INTO `confusart_db`.`tbProdutos`"
+                                    + " (`CodigoModelo`,"
+                                    + "`Modelo`,"
+                                    + "`Tamanho`,"
+                                    + "`Altura`,"
+                                    + "`Largura`,"
+                                    + "`Comprimento`,"
+                                    + "`Peso`,"
+                                    + "`DataInsert`,"
+                                    + "`IdUsuario`)"
+                                    + "VALUES"
+                                    + "('" + codigoModelo + "',"
+                                    + "'" + txtModelo.Text + "',"
+                                    + "'" + tamanho + "',"
+                                    + txtAltura.Text + ","
+                                    + txtLargura.Text + ","
+                                    + txtComprimento.Text + ","
+                                    + txtPeso.Text + ","
+                                    + "'" + Insertdata + "',"
+                                    + " 01)";
+
+
+                // valida execução
+                if (cnn.GetExecute_non_query())
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch
+            {
+
+                return false;
             }
         }
 

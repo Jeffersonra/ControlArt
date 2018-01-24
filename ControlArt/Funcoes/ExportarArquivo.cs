@@ -104,7 +104,7 @@ namespace ControlArt.Funcoes
                 return true;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

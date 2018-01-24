@@ -117,7 +117,7 @@
       <DependentUpon>FrmCadastroUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcoes\ExportarArquivo.cs" />
-    <Compile Include="Funcoes\LimpaCampos.cs" />
+    <Compile Include="Funcoes\TrataCampos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCadastrarCli.resx">

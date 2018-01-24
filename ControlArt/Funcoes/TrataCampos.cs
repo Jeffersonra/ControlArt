@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ControlArt.Funcoes
 {
-    class LimpaCampos
+    public class TrataCampos
     {
-        public void ClearForm(System.Windows.Forms.Control parent)
+        public void LimparForms(System.Windows.Forms.Control parent)
         {
             foreach (System.Windows.Forms.Control ctrControl in parent.Controls)
             {
@@ -43,9 +44,14 @@ namespace ControlArt.Funcoes
                 if (ctrControl.Controls.Count > 0)
                 {
                     //Call itself to get all other controls in other containers 
-                    ClearForm(ctrControl);
+                    LimparForms(ctrControl);
                 }
             }
+        }
+
+        public void RecebeApenasNumeros(System.Windows.Forms.Control parent)
+        {
+            parent.Text = Regex.Replace(parent.Text, "[^0-9]", "");
         }
     }
 }

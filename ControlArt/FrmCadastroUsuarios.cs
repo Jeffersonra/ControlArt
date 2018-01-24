@@ -77,7 +77,7 @@ namespace ControlArt
         #region "Métodos"
 
         /// <summary>
-        /// Metodo para Insere os dados na base
+        /// Metodo para Insere os dados de Usuários na base
         /// </summary>
         private bool InsereDados()
         {
