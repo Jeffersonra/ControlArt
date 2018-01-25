@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ControlArt.Funcoes
 {
     public class TrataCampos
     {
+        string tamanho;
         public void LimparForms(System.Windows.Forms.Control parent)
         {
             foreach (System.Windows.Forms.Control ctrControl in parent.Controls)
@@ -52,6 +54,22 @@ namespace ControlArt.Funcoes
         public void RecebeApenasNumeros(System.Windows.Forms.Control parent)
         {
             parent.Text = Regex.Replace(parent.Text, "[^0-9]", "");
+        }
+
+        public string RadioSelecionado(System.Windows.Forms.Control parent)
+        {
+            
+            foreach (Control ctrl in parent.Controls)
+            {
+                //Testa para verificar se o Controle é um RadioButton
+                if (ctrl.GetType().ToString() == "System.Windows.Forms.RadioButton")
+                    if (((RadioButton)ctrl).Checked == true)
+                    {
+                        tamanho = ctrl.Text;
+                    }
+            }
+
+            return tamanho;
         }
     }
 }

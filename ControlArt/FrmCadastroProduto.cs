@@ -19,6 +19,8 @@ namespace ControlArt
         private string Insertdata;
         private string tamanho;
         private string codigoModelo;
+        private int resultadoID;
+
 
         public FrmCadastroProduto()
         {
@@ -30,6 +32,7 @@ namespace ControlArt
             this.radDetalheNao.Checked = true;
             this.radP.Checked = false;
         }
+
 
 
         //Instancia Classe para tratar campos do Form
@@ -229,7 +232,16 @@ namespace ControlArt
             {
                 MessageBox.Show("Por favor, Preencher todos os campos dos Detalhes");
             }
+            else if (InsereProdutoDetalhe())
+            {
+                MessageBox.Show("Inserido com sucesso");
+            }
+            else
+            {
+                MessageBox.Show("Não foi possivel salvar");
+            }
         }
+
 
         private bool InsereProduto()
         {
@@ -238,17 +250,11 @@ namespace ControlArt
                 data = DateTime.Now;
                 Insertdata = data.Year + "-" + data.Month + "-" + data.Day;
 
-                foreach (Control ctrl in this.grpProduto.Controls)
-                {
-                    //Testa para verificar se o Controle é um RadioButton
-                    if (ctrl.GetType().ToString() == "System.Windows.Forms.RadioButton")
-                        if (((RadioButton)ctrl).Checked == true)
-                        {
-                            tamanho = ctrl.Text;
-                        }
-                }
+                tamanho = TrataCampos.RadioSelecionado(this.grpProduto);
 
                 codigoModelo = txtModelo.Text.Substring(0, 3) + tamanho;
+
+
                 //Conecta Sql
                 Conecta cnn = new Conecta();
                 cnn.query_string = "";
@@ -278,6 +284,7 @@ namespace ControlArt
                 // valida execução
                 if (cnn.GetExecute_non_query())
                 {
+                    this.txtCodigo.Text = codigoModelo;
                     return true;
                 }
                 else
@@ -293,5 +300,77 @@ namespace ControlArt
             }
         }
 
+        private bool InsereProdutoDetalhe()
+        {
+            try
+            {
+                data = DateTime.Now;
+                Insertdata = data.Year + "-" + data.Month + "-" + data.Day;
+
+                tamanho = "";
+                tamanho = TrataCampos.RadioSelecionado(this.grdDetalhes); //Corrigir Seleção do radio Buton
+
+                var IdProduto = BuscaIdProduto();
+                //Conecta Sql
+                Conecta cnn = new Conecta();
+                cnn.query_string = "";
+
+                cnn.query_string = "INSERT INTO `confusart_db`.`tbprodutosdetalhes`"
+                                    + "(`IdProduto`,"
+                                    + "`CodigoModelo`,"
+                                    + "`Modelo`,"
+                                    + "`Tamanho`,"
+                                    + "`Altura`,"
+                                    + "`Largura`,"
+                                    + "`Comprimento`,"
+                                    + "`DataInsert`,"
+                                    + "`IdUsuario`)"
+                                    + "VALUES"
+                                    + "('" + IdProduto + "',"
+                                    + "'" + codigoModelo + "',"
+                                    + "'" + this.txtNomeDetalhe.Text + "',"
+                                    + "'" + tamanho + "',"
+                                    + this.txtAlturaDetalhe.Text + ","
+                                    + txtLarguraDetalhe.Text + ","
+                                    + txtComprimentoDetalhe.Text + ","
+                                    + "'" + Insertdata + "',"
+                                    + " 01)";
+
+
+                // valida execução
+                if (cnn.GetExecute_non_query())
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+            }
+            catch
+            {
+
+                return false;
+            }
+
+        }
+
+        private int BuscaIdProduto()
+        {
+            Conecta cnn = new Conecta();
+            cnn.query_string = "";
+
+            cnn.query_string = "SELECT ID FROM tbprodutos WHERE CodigoModelo = '" + codigoModelo + "'";
+
+            var IdProduto = cnn.Mysql_data_reader();
+
+            while (IdProduto.Read())
+            {
+                resultadoID = Convert.ToInt16(IdProduto["ID"]);
+            }                
+
+            return resultadoID;
+        }
     }
 }

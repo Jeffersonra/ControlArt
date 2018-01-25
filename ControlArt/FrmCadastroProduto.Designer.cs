@@ -70,6 +70,8 @@
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.grpProduto = new System.Windows.Forms.GroupBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpDetalhes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetalhes)).BeginInit();
@@ -473,6 +475,8 @@
             // 
             // grpProduto
             // 
+            this.grpProduto.Controls.Add(this.label1);
+            this.grpProduto.Controls.Add(this.txtCodigo);
             this.grpProduto.Controls.Add(this.txtModelo);
             this.grpProduto.Controls.Add(this.txtPeso);
             this.grpProduto.Controls.Add(this.txtComprimento);
@@ -494,6 +498,23 @@
             this.grpProduto.TabIndex = 39;
             this.grpProduto.TabStop = false;
             this.grpProduto.Text = "Produto";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Location = new System.Drawing.Point(132, 16);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo.TabIndex = 40;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(89, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Codigo:";
             // 
             // FrmCadastroProduto
             // 
@@ -567,5 +588,7 @@
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.GroupBox grpProduto;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label label1;
     }
 }
