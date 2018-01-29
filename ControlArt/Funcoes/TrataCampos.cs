@@ -42,7 +42,7 @@ namespace ControlArt.Funcoes
                 {
                     //Unselect all RadioButtons
                     ((System.Windows.Forms.RadioButton)ctrControl).Checked = false;
-                }
+                }                
                 if (ctrControl.Controls.Count > 0)
                 {
                     //Call itself to get all other controls in other containers 
