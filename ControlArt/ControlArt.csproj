@@ -86,6 +86,18 @@
     <Compile Include="FrmCadastrarCli.Designer.cs">
       <DependentUpon>FrmCadastrarCli.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCadastrarCor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastrarCor.Designer.cs">
+      <DependentUpon>FrmCadastrarCor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCadastrarGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastrarGrupo.Designer.cs">
+      <DependentUpon>FrmCadastrarGrupo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConsultaCli.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +134,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCadastrarCli.resx">
       <DependentUpon>FrmCadastrarCli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastrarCor.resx">
+      <DependentUpon>FrmCadastrarCor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastrarGrupo.resx">
+      <DependentUpon>FrmCadastrarGrupo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultaCli.resx">
       <DependentUpon>FrmConsultaCli.cs</DependentUpon>

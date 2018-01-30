@@ -32,7 +32,6 @@
             this.dtIdade = new System.Windows.Forms.DateTimePicker();
             this.radioButtonM = new System.Windows.Forms.RadioButton();
             this.radioButtonF = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,11 +41,12 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.lblTel = new System.Windows.Forms.Label();
             this.txtTel = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnGrava
             // 
-            this.btnGrava.Location = new System.Drawing.Point(517, 298);
+            this.btnGrava.Location = new System.Drawing.Point(18, 326);
             this.btnGrava.Name = "btnGrava";
             this.btnGrava.Size = new System.Drawing.Size(101, 43);
             this.btnGrava.TabIndex = 7;
@@ -58,7 +58,7 @@
             // 
             this.dtIdade.CustomFormat = "yyyy-mm-dd";
             this.dtIdade.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtIdade.Location = new System.Drawing.Point(258, 255);
+            this.dtIdade.Location = new System.Drawing.Point(18, 240);
             this.dtIdade.Name = "dtIdade";
             this.dtIdade.Size = new System.Drawing.Size(101, 20);
             this.dtIdade.TabIndex = 4;
@@ -67,7 +67,7 @@
             // radioButtonM
             // 
             this.radioButtonM.AutoSize = true;
-            this.radioButtonM.Location = new System.Drawing.Point(262, 298);
+            this.radioButtonM.Location = new System.Drawing.Point(22, 283);
             this.radioButtonM.Name = "radioButtonM";
             this.radioButtonM.Size = new System.Drawing.Size(34, 17);
             this.radioButtonM.TabIndex = 5;
@@ -78,7 +78,7 @@
             // radioButtonF
             // 
             this.radioButtonF.AutoSize = true;
-            this.radioButtonF.Location = new System.Drawing.Point(305, 298);
+            this.radioButtonF.Location = new System.Drawing.Point(65, 283);
             this.radioButtonF.Name = "radioButtonF";
             this.radioButtonF.Size = new System.Drawing.Size(31, 17);
             this.radioButtonF.TabIndex = 6;
@@ -87,19 +87,9 @@
             this.radioButtonF.UseVisualStyleBackColor = true;
             this.radioButtonF.CheckedChanged += new System.EventHandler(this.radioButtonF_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(252, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(380, 31);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Cadastro Cliente - Confusart ";
-            // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(258, 119);
+            this.txtNome.Location = new System.Drawing.Point(18, 104);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(360, 20);
             this.txtNome.TabIndex = 1;
@@ -107,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(255, 103);
+            this.label2.Location = new System.Drawing.Point(15, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 6;
@@ -116,7 +106,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(255, 150);
+            this.label4.Location = new System.Drawing.Point(15, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 8;
@@ -125,7 +115,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(255, 239);
+            this.label5.Location = new System.Drawing.Point(15, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 9;
@@ -134,7 +124,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(255, 282);
+            this.label6.Location = new System.Drawing.Point(15, 267);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 10;
@@ -142,14 +132,14 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(258, 166);
+            this.txtEmail.Location = new System.Drawing.Point(18, 151);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(360, 20);
             this.txtEmail.TabIndex = 2;
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(797, 366);
+            this.btnSair.Location = new System.Drawing.Point(303, 346);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 8;
@@ -160,7 +150,7 @@
             // lblTel
             // 
             this.lblTel.AutoSize = true;
-            this.lblTel.Location = new System.Drawing.Point(255, 190);
+            this.lblTel.Location = new System.Drawing.Point(15, 175);
             this.lblTel.Name = "lblTel";
             this.lblTel.Size = new System.Drawing.Size(55, 13);
             this.lblTel.TabIndex = 11;
@@ -168,17 +158,27 @@
             // 
             // txtTel
             // 
-            this.txtTel.Location = new System.Drawing.Point(258, 207);
+            this.txtTel.Location = new System.Drawing.Point(18, 192);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(125, 20);
             this.txtTel.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(380, 31);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Cadastro Cliente - Confusart ";
             // 
             // FrmCadastrarCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(884, 401);
+            this.ClientSize = new System.Drawing.Size(398, 401);
             this.Controls.Add(this.txtTel);
             this.Controls.Add(this.lblTel);
             this.Controls.Add(this.btnSair);
@@ -210,7 +210,6 @@
         private System.Windows.Forms.DateTimePicker dtIdade;
         private System.Windows.Forms.RadioButton radioButtonM;
         private System.Windows.Forms.RadioButton radioButtonF;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -220,5 +219,6 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox txtTel;
+        private System.Windows.Forms.Label label1;
     }
 }

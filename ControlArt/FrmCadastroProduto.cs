@@ -33,10 +33,7 @@ namespace ControlArt
             this.radDetalheNao.Checked = true;
             CarregaComboBoxForm();
         }
-
-
-
-
+        
         //Instancia Classe para tratar campos do Form
         TrataCampos TrataCampos = new TrataCampos();
 
@@ -79,7 +76,7 @@ namespace ControlArt
                     MessageBox.Show("Erro ao atualizar!");
                 }
             }
-            
+
         }
 
         private void apagarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,7 +94,6 @@ namespace ControlArt
                 }
             }
         }
-
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -121,7 +117,8 @@ namespace ControlArt
         }
         #endregion
 
-        #region RadioButton Detalhes
+
+        #region Validações
         private void radDetalheNao_CheckedChanged(object sender, EventArgs e)
         {
             if (radDetalheNao.Checked == true)
@@ -160,9 +157,6 @@ namespace ControlArt
             }
 
         }
-        #endregion
-
-        #region Validações
 
         /// <summary>
         /// Metodo para Validar Dados digitados dos Produtos
@@ -424,7 +418,7 @@ namespace ControlArt
                 Conecta cnn = new Conecta();
                 cnn.query_string = "";
 
-                cnn.query_string = "UPDATE `confusart_db`.`tbprodutos`"
+                cnn.query_string = "UPDATE `confusart_db`.`tbProdutos`"
                                     + "SET "
                                     + "`Modelo` = '" + txtModelo.Text + "',"
                                     + "`Tamanho` = '" + cboTamanhoModelo.Text + "',"
@@ -468,7 +462,7 @@ namespace ControlArt
                 Conecta cnn = new Conecta();
                 cnn.query_string = "";
 
-                cnn.query_string = "INSERT INTO `confusart_db`.`tbprodutosdetalhes`"
+                cnn.query_string = "INSERT INTO `confusart_db`.`tbProdutosDetalhes`"
                                     + "(`IdProduto`,"
                                     + "`CodigoModelo`,"
                                     + "`Modelo`,"
@@ -519,20 +513,20 @@ namespace ControlArt
 
                 //BuscaIdDetalhes
                 cnn.query_string = "";
-                cnn.query_string = "SELECT ID FROM TBPRODUTOSDETALHES WHERE CODIGOMODELO ='" + codigoModelo + "'";
+                cnn.query_string = "SELECT ID FROM tbProdutosDetalhes WHERE CODIGOMODELO ='" + codigoModelo + "'";
                 IdDetalhe = cnn.Mysql_data_adapter();
 
                 //Deleta Detalhes
                 foreach (DataRow item in IdDetalhe.Rows)
                 {
                     cnn.query_string = "";
-                    cnn.query_string = "DELETE FROM TBPRODUTOSDETALHES WHERE ID = '" + item["ID"].ToString() + "'";
+                    cnn.query_string = "DELETE FROM tbProdutosDetalhes WHERE ID = '" + item["ID"].ToString() + "'";
                     cnn.GetExecute_non_query();
                 }
 
                 //Deleta Produto
                 cnn.query_string = "";
-                cnn.query_string = "DELETE FROM TBPRODUTOS WHERE ID = '" + idproduto + "'";
+                cnn.query_string = "DELETE FROM tbProdutos WHERE ID = '" + idproduto + "'";
                 cnn.GetExecute_non_query();
 
                 return true;
@@ -554,7 +548,7 @@ namespace ControlArt
 
 
                 cnn.query_string = "";
-                cnn.query_string = "DELETE FROM TBPRODUTOSDETALHES WHERE ID = '" + idDetalhe + "'";
+                cnn.query_string = "DELETE FROM tbProdutosDetalhes WHERE ID = '" + idDetalhe + "'";
                 cnn.GetExecute_non_query();
 
 
@@ -571,7 +565,7 @@ namespace ControlArt
             Conecta cnn = new Conecta();
             cnn.query_string = "";
 
-            cnn.query_string = "SELECT ID FROM tbprodutos WHERE CodigoModelo = '" + codigoModelo + "'";
+            cnn.query_string = "SELECT ID FROM tbProdutos WHERE CodigoModelo = '" + codigoModelo + "'";
 
             var IdProduto = cnn.Mysql_data_reader();
 
@@ -599,7 +593,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "SELECT ID, Modelo FROM tbprodutosdetalhes where CodigoModelo = '" + codigoModelo + "';";
+            cnn.query_string = "SELECT ID, Modelo FROM tbProdutosDetalhes where CodigoModelo = '" + codigoModelo + "';";
 
             var tabela = cnn.Mysql_data_adapter();
 
@@ -611,7 +605,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "select ID, COR from tbcorproduto order by cor;";
+            cnn.query_string = "select ID, COR from tbCorProduto order by cor;";
 
             var tabela = cnn.Mysql_data_adapter();
 
@@ -623,7 +617,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "select ID, GRUPO from tbgrupoproduto order by GRUPO;";
+            cnn.query_string = "select ID, GRUPO from tbGrupoProduto order by GRUPO;";
 
             var tabela = cnn.Mysql_data_adapter();
 
@@ -635,7 +629,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "select ID, tamanho from tbtamanho order by  tamanho desc;";
+            cnn.query_string = "select ID, tamanho from tbTamanho order by  tamanho desc;";
 
             var tabela = cnn.Mysql_data_adapter();
 
@@ -647,7 +641,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "SELECT ID, Modelo FROM tbprodutos;";
+            cnn.query_string = "SELECT ID, Modelo FROM tbProdutos;";
 
             var tabela = cnn.Mysql_data_adapter();
 
@@ -667,7 +661,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "SELECT ID, codigoModelo, Modelo, Tamanho, Altura, Largura, Comprimento, peso, idCor, idGrupo FROM tbprodutos where ID = " + this.cboListaProdutosCadastrados.SelectedValue;
+            cnn.query_string = "SELECT ID, codigoModelo, Modelo, Tamanho, Altura, Largura, Comprimento, peso, idCor, idGrupo FROM tbProdutos where ID = " + this.cboListaProdutosCadastrados.SelectedValue;
 
             var tabela = cnn.Mysql_data_reader();
 
@@ -696,7 +690,7 @@ namespace ControlArt
             Conecta cnn = new Conecta();
             cnn.query_string = "";
             //var teste = cboDetalhesCadastrado.SelectedText;
-            cnn.query_string = "SELECT ID, IdProduto, CodigoModelo,Modelo, Tamanho, Altura, Largura, Comprimento FROM tbprodutosdetalhes where CodigoModelo = '" + codigoModelo + "' and id = \"" + cboDetalhesCadastrado.SelectedValue + "\";";
+            cnn.query_string = "SELECT ID, IdProduto, CodigoModelo,Modelo, Tamanho, Altura, Largura, Comprimento FROM tbProdutosDetalhes where CodigoModelo = '" + codigoModelo + "' and id = \"" + cboDetalhesCadastrado.SelectedValue + "\";";
 
             var tabela = cnn.Mysql_data_reader();
 

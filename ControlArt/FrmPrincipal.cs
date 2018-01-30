@@ -192,5 +192,55 @@ namespace ControlArt
                 frmChild.Show();
             }
         }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmCadastrarCor frmChild = new FrmCadastrarCor();
+            frmChild.MdiParent = this;
+
+            //Verifica se o form ja esta aberto se estiver da um focus no form.
+            bool _found = false;
+
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmCadastrarCor)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+
+            if (!_found)
+            {
+                FrmCadastrarCor _form2 = new FrmCadastrarCor();
+                frmChild.Text = "Cadastra Cor";
+                frmChild.Show();
+            }
+        }
+
+        private void cadastrarGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCadastrarGrupo frmChild = new FrmCadastrarGrupo();
+            frmChild.MdiParent = this;
+
+            //Verifica se o form ja esta aberto se estiver da um focus no form.
+            bool _found = false;
+
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmCadastrarGrupo)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+
+            if (!_found)
+            {
+                FrmCadastrarGrupo _form2 = new FrmCadastrarGrupo();
+                frmChild.Text = "Cadastra Grupo";
+                frmChild.Show();
+            }
+        }
     }
 }
