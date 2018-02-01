@@ -17,7 +17,7 @@ namespace ControlArt
     {
         private DateTime data;
         private string Insertdata;
-        private string codigoModelo;
+        private string IDModelo;
         private int resultadoID;
         private DataTable GridDetalhe;
         public DataTable IdDetalhe;
@@ -44,7 +44,7 @@ namespace ControlArt
             this.grdDetalhes.DataSource = null;
             this.grdDetalhes.Refresh();
             this.radDetalheNao.Checked = true;
-            codigoModelo = null;
+            IDModelo = null;
         }
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace ControlArt
             {
                 MessageBox.Show("Por favor, Preencher todos os campos do Produto");
             }
-            else if (String.IsNullOrEmpty(codigoModelo))
+            else if (String.IsNullOrEmpty(IDModelo))
             {
                 if (InsereProduto())
                 {
@@ -68,7 +68,6 @@ namespace ControlArt
             {
                 if (AtualizaProduto())
                 {
-                    CarregaComboBoxForm();
                     MessageBox.Show("Produto Atualizado!");
                 }
                 else
@@ -83,7 +82,7 @@ namespace ControlArt
         {
             if (MessageBox.Show("Deseja realmente apagar o produto?", "Apagar Produto?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (ApagarProdutoDetalhe(codigoModelo))
+                if (ApagarProdutoDetalhe(IDModelo))
                 {
                     MessageBox.Show("Produto Apagado!");
                     TrataCampos.LimparForms(this);
@@ -100,7 +99,7 @@ namespace ControlArt
             this.grdDetalhes.DataSource = null;
             this.grdDetalhes.Refresh();
             this.radDetalheNao.Checked = true;
-            codigoModelo = null;
+            IDModelo = null;
             this.txtNomeDetalhe.Text = "";
             this.txtAlturaDetalhe.Text = "";
             this.txtLarguraDetalhe.Text = "";
@@ -129,6 +128,7 @@ namespace ControlArt
                 this.txtLarguraDetalhe.Enabled = false;
                 this.txtNomeDetalhe.Enabled = false;
                 this.btnSalvar.Enabled = false;
+                this.btnApagar.Enabled = false;
                 this.cboDetalhesCadastrado.Enabled = false;
             }
         }
@@ -136,7 +136,7 @@ namespace ControlArt
         {
             if (radDetalheSim.Checked == true)
             {
-                if (string.IsNullOrEmpty(codigoModelo))
+                if (string.IsNullOrEmpty(IDModelo))
                 {
                     MessageBox.Show("Não é possível Cadastrar o Detalhe. Por favor,  Cadastre o Produto");
                     radDetalheNao.Checked = true;
@@ -149,6 +149,7 @@ namespace ControlArt
                     this.txtLarguraDetalhe.Enabled = true;
                     this.txtNomeDetalhe.Enabled = true;
                     this.btnSalvar.Enabled = true;
+                    this.btnApagar.Enabled = true;
                     this.cboDetalhesCadastrado.Enabled = true;
                     PopulaGridDetalhes();
                     CarregaComboBoxDetalhes();
@@ -352,7 +353,7 @@ namespace ControlArt
                 data = DateTime.Now;
                 Insertdata = data.Year + "-" + data.Month + "-" + data.Day;
 
-                codigoModelo = txtModelo.Text.Substring(0, 3) + cboTamanhoModelo.Text;
+                IDModelo = cboGrupo.Text.Substring(0,3) + "-" +  txtModelo.Text.Substring(0, 3) + "-" + cboTamanhoModelo.Text;
 
 
                 //Conecta Sql
@@ -361,7 +362,6 @@ namespace ControlArt
 
 
                 cnn.query_string = "INSERT INTO `confusart_db`.`tbProdutos`"
-                                    + " (`CodigoModelo`,"
                                     + "`Modelo`,"
                                     + "`Tamanho`,"
                                     + "`Altura`,"
@@ -373,7 +373,7 @@ namespace ControlArt
                                     + "`DataInsert`,"
                                     + "`IdUsuario`)"
                                     + "VALUES"
-                                    + "('" + codigoModelo + "',"
+                                    + "('" + IDModelo + "',"
                                     + "'" + txtModelo.Text + "',"
                                     + "'" + cboTamanhoModelo.Text + "',"
                                     + txtAltura.Text + ","
@@ -389,7 +389,7 @@ namespace ControlArt
                 // valida execução
                 if (cnn.GetExecute_non_query())
                 {
-                    this.txtCodigo.Text = codigoModelo;
+                    this.txtCodigo.Text = IDModelo;
                     return true;
                 }
                 else
@@ -464,7 +464,6 @@ namespace ControlArt
 
                 cnn.query_string = "INSERT INTO `confusart_db`.`tbProdutosDetalhes`"
                                     + "(`IdProduto`,"
-                                    + "`CodigoModelo`,"
                                     + "`Modelo`,"
                                     + "`Tamanho`,"
                                     + "`Altura`,"
@@ -474,7 +473,7 @@ namespace ControlArt
                                     + "`IdUsuario`)"
                                     + "VALUES"
                                     + "('" + IdProduto + "',"
-                                    + "'" + codigoModelo + "',"
+                                    + "'" + IDModelo + "',"
                                     + "'" + this.txtNomeDetalhe.Text + "',"
                                     + "'" + cboTamanhoDetalhe.Text + "',"
                                     + this.txtAlturaDetalhe.Text + ","
@@ -503,7 +502,7 @@ namespace ControlArt
 
         }
 
-        private bool ApagarProdutoDetalhe(string codigoModelo)
+        private bool ApagarProdutoDetalhe(string IDModelo)
         {
             try
             {
@@ -513,7 +512,7 @@ namespace ControlArt
 
                 //BuscaIdDetalhes
                 cnn.query_string = "";
-                cnn.query_string = "SELECT ID FROM tbProdutosDetalhes WHERE CODIGOMODELO ='" + codigoModelo + "'";
+                cnn.query_string = "SELECT ID FROM tbProdutosDetalhes WHERE IdProduto ='" + IDModelo + "'";
                 IdDetalhe = cnn.Mysql_data_adapter();
 
                 //Deleta Detalhes
@@ -565,7 +564,7 @@ namespace ControlArt
             Conecta cnn = new Conecta();
             cnn.query_string = "";
 
-            cnn.query_string = "SELECT ID FROM tbProdutos WHERE CodigoModelo = '" + codigoModelo + "'";
+            cnn.query_string = "SELECT ID FROM tbProdutos WHERE ID = '" + IDModelo + "'";
 
             var IdProduto = cnn.Mysql_data_reader();
 
@@ -593,7 +592,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "SELECT ID, Modelo FROM tbProdutosDetalhes where CodigoModelo = '" + codigoModelo + "';";
+            cnn.query_string = "SELECT ID, Modelo FROM tbProdutosDetalhes where ID = '" + IDModelo + "';";
 
             var tabela = cnn.Mysql_data_adapter();
 
@@ -661,7 +660,7 @@ namespace ControlArt
         {
             Conecta cnn = new Conecta();
             cnn.query_string = "";
-            cnn.query_string = "SELECT ID, codigoModelo, Modelo, Tamanho, Altura, Largura, Comprimento, peso, idCor, idGrupo FROM tbProdutos where ID = " + this.cboListaProdutosCadastrados.SelectedValue;
+            cnn.query_string = "SELECT ID, Modelo, Tamanho, Altura, Largura, Comprimento, peso, idCor, idGrupo FROM tbProdutos where ID = " + this.cboListaProdutosCadastrados.SelectedValue;
 
             var tabela = cnn.Mysql_data_reader();
 
@@ -673,8 +672,15 @@ namespace ControlArt
                 this.txtLargura.Text = Convert.ToString(tabela["Largura"]);
                 this.txtComprimento.Text = Convert.ToString(tabela["Comprimento"]);
                 this.txtPeso.Text = Convert.ToString(tabela["peso"]);
-                codigoModelo = Convert.ToString(tabela["codigoModelo"]);
-                this.txtCodigo.Text = codigoModelo;
+                IDModelo = Convert.ToString(tabela["ID"]);
+                this.txtCodigo.Text = IDModelo;
+
+                var tamanho = this.cboTamanhoModelo.FindStringExact(tabela["Tamanho"].ToString());
+                cboTamanhoModelo.SelectedIndex = tamanho;
+
+                var grupo = this.cboGrupo.SelectedValue = Convert.ToInt32(tabela["idGrupo"]);
+
+                var idCor = cboCor.SelectedValue = Convert.ToInt32(tabela["idCor"]);
 
             }
 
@@ -690,7 +696,7 @@ namespace ControlArt
             Conecta cnn = new Conecta();
             cnn.query_string = "";
             //var teste = cboDetalhesCadastrado.SelectedText;
-            cnn.query_string = "SELECT ID, IdProduto, CodigoModelo,Modelo, Tamanho, Altura, Largura, Comprimento FROM tbProdutosDetalhes where CodigoModelo = '" + codigoModelo + "' and id = \"" + cboDetalhesCadastrado.SelectedValue + "\";";
+            cnn.query_string = "SELECT ID, IdProduto, Modelo, Tamanho, Altura, Largura, Comprimento FROM tbProdutosDetalhes where CodigoModelo = '" + IDModelo + "' and id = \"" + cboDetalhesCadastrado.SelectedValue + "\";";
 
             var tabela = cnn.Mysql_data_reader();
 
